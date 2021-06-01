@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public interface DAO<T> {
 
-    Optional get(Integer id);
+    T get(int id);
     void save(T model);
     void update(T model);
-    void delete(Integer id);
+    void delete(T model);
 
 }
