@@ -21,7 +21,7 @@ public class Todo {
     @Column(name = "is_done")
     private Boolean isDone = false;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -36,10 +36,6 @@ public class Todo {
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getDescription() {
