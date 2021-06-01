@@ -11,7 +11,7 @@ public class TodoService {
 
     public TodoService(){}
 
-    public void getTodo(Integer id){
+    public void getTodo(int id){
         todoDAO.get(id);
     }
 
