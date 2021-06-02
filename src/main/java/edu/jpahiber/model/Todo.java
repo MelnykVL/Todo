@@ -21,7 +21,7 @@ public class Todo {
     @Column(name = "is_done")
     private Boolean isDone = false;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 

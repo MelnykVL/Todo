@@ -1,6 +1,7 @@
 package edu.jpahiber.dao;
 
 import edu.jpahiber.model.Todo;
+import edu.jpahiber.model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -10,7 +11,14 @@ public class TodoDAOImpl implements TodoDAO{
 
     @Override
     public Todo get(int id) {
-        return HibernateUtil.getSessionFactory().openSession().get(Todo.class, id);
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        Todo todo = session.get(Todo.class, id);
+        tx.commit();
+        session.close();
+        return todo;
+
     }
 
     @Override

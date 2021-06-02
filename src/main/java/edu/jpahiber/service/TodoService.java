@@ -1,13 +1,14 @@
 package edu.jpahiber.service;
 
 import edu.jpahiber.dao.TodoDAO;
+import edu.jpahiber.dao.TodoDAOImpl;
 import edu.jpahiber.model.Todo;
 
 import java.util.List;
 
 public class TodoService {
 
-    private TodoDAO todoDAO;
+    private TodoDAO todoDAO = new TodoDAOImpl();
 
     public TodoService(){}
 
@@ -15,7 +16,7 @@ public class TodoService {
         todoDAO.get(id);
     }
 
-    public void addTodo(Todo model){
+    public void saveTodo(Todo model){
         todoDAO.save(model);
     }
 

@@ -1,16 +1,22 @@
 package edu.jpahiber.dao;
 
+import edu.jpahiber.model.Todo;
 import edu.jpahiber.model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import java.util.Optional;
 
 public class UserDAOImpl implements UserDAO{
 
     @Override
     public User get(int id) {
-        return HibernateUtil.getSessionFactory().openSession().get(User.class, id);
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        User user = session.get(User.class, id);
+        tx.commit();
+        session.close();
+        return user;
+
     }
 
     @Override

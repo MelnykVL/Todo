@@ -12,7 +12,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer userId;
+    private Integer id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -26,8 +26,8 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Todo> todoList = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Todo> todoList;
 
     public User() {
     }
@@ -37,6 +37,7 @@ public class User {
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+        todoList = new ArrayList<>();
     }
 
     public User(String firstName, String lastName, String username, String password, List<Todo> todoList) {
@@ -47,8 +48,8 @@ public class User {
         this.todoList = todoList;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -92,7 +93,12 @@ public class User {
     }
 
     public void addTodo(Todo todo){
+        todo.setUser(this);
         todoList.add(todo);
+    }
+
+    public void removeTodo(Todo model){
+        todoList.remove(model);
     }
 
 
@@ -101,7 +107,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(userId, user.userId)
+        return Objects.equals(id, user.id)
                 && Objects.equals(firstName, user.firstName)
                 && Objects.equals(lastName, user.lastName)
                 && Objects.equals(username, user.username)
@@ -110,13 +116,13 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, firstName, lastName, username, password);
+        return Objects.hash(id, firstName, lastName, username, password);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +

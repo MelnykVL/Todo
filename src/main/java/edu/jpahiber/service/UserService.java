@@ -6,12 +6,12 @@ import edu.jpahiber.model.User;
 
 public class UserService {
 
-    private  UserDAO userDAO;
+    private  UserDAO userDAO = new UserDAOImpl();
 
     public UserService(){}
 
     public User getUser(int id){
-        return userDAO.get(id);
+        return (User) userDAO.get(id);
     }
 
     public void saveUser(User model){
