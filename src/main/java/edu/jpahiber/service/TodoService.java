@@ -12,8 +12,8 @@ public class TodoService {
 
     public TodoService(){}
 
-    public void getTodo(int id){
-        todoDAO.get(id);
+    public Todo getTodo(int id){
+        return todoDAO.get(id);
     }
 
     public void saveTodo(Todo model){

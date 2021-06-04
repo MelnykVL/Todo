@@ -27,7 +27,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Todo> todoList;
+    private List<Todo> todoList = new ArrayList<>();;
 
     public User() {
     }
@@ -37,7 +37,6 @@ public class User {
         this.lastName = lastName;
         this.username = username;
         this.password = password;
-        todoList = new ArrayList<>();
     }
 
     public User(String firstName, String lastName, String username, String password, List<Todo> todoList) {
