@@ -1,6 +1,5 @@
 package edu.jpahiber.dao;
 
-import edu.jpahiber.model.Todo;
 import edu.jpahiber.model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
