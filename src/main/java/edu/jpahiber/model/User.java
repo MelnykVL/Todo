@@ -98,6 +98,7 @@ public class User {
 
     public void removeTodo(Todo model){
         todoList.remove(model);
+        model.setUser(null);
     }
 
 
