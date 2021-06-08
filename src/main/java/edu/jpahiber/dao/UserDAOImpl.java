@@ -52,8 +52,18 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public boolean userVerification(String username, String pass) {
+    public boolean verification(String username, String pass) {
 
-        return false;
+        User user = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        user = (User) session.createQuery("From User u WHERE u.username = :username").setParameter("username", username).uniqueResult();
+        tx.commit();
+        session.close();
+
+        return user != null && user.getPassword().equals(pass);
+
     }
+
+
 }
