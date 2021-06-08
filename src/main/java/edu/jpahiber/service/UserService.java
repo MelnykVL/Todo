@@ -1,29 +1,28 @@
 package edu.jpahiber.service;
 
-import edu.jpahiber.dao.UserDAO;
 import edu.jpahiber.dao.UserDAOImpl;
 import edu.jpahiber.model.User;
 
 public class UserService {
 
-    private  UserDAO userDAO = new UserDAOImpl();
+    private final UserDAOImpl userDAOImpl = new UserDAOImpl();
 
     public UserService(){}
 
     public User getUser(int id){
-        return (User) userDAO.get(id);
+        return (User) userDAOImpl.get(id);
     }
 
     public void saveUser(User model){
-        userDAO.save(model);
+        userDAOImpl.save(model);
     }
 
     public void updateUser(User model){
-        userDAO.update(model);
+        userDAOImpl.update(model);
     }
 
     public void deleteUser(User model){
-        userDAO.delete(model);
+        userDAOImpl.delete(model);
     }
 
 }
