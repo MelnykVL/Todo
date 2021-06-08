@@ -18,13 +18,11 @@ import java.io.PrintWriter;
 public class MainController extends HttpServlet {
 
     UserService userService;
-    TodoService todoService;
     User user = null;
 
     @Override
     public void init() throws ServletException {
         userService = new UserService();
-        todoService = new TodoService();
         user = userService.getUser(9);
     }
 
@@ -46,27 +44,17 @@ public class MainController extends HttpServlet {
     }
 
     private void addTask(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        resp.setContentType("text/html; charset=UTF-8");
-        PrintWriter out = resp.getWriter();
 
         String title = req.getParameter("title");
         String description = req.getParameter("description");
 
-        out.write("<script type=\"text/javascript\">\n" +
-                "console.log(" + user + ")" +
-                "</script>");
-
         Todo todo = new Todo(title, description, user);
-        user.addTodo(todo);
 
-        out.write("<script type=\"text/javascript\">\n" +
-                "console.log(" + todo + ")" +
-                "</script>");
+        user.addTodo(todo);
 
         userService.updateUser(user);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("main.jsp");
-        requestDispatcher.include(req, resp);
+        resp.sendRedirect("main");
 
     }
 
