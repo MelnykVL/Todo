@@ -2,7 +2,6 @@ package edu.jpahiber.controller;
 
 import edu.jpahiber.model.Todo;
 import edu.jpahiber.model.User;
-import edu.jpahiber.service.TodoService;
 import edu.jpahiber.service.UserService;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "MainController", urlPatterns = {"/main"})
 public class MainController extends HttpServlet {
@@ -23,13 +22,20 @@ public class MainController extends HttpServlet {
     @Override
     public void init() throws ServletException {
         userService = new UserService();
-        user = userService.getUser(9);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        user = userService.getUser(9);
+
+        List<Todo> todoList = user.getTodoList();
+
+        req.setAttribute("todoList", todoList);
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("main.jsp");
-        requestDispatcher.include(req, resp);
+        requestDispatcher.forward(req, resp);
+
     }
 
     @Override
@@ -43,7 +49,10 @@ public class MainController extends HttpServlet {
 
     }
 
+
+
     private void addTask(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        req.setCharacterEncoding("UTF-8");
 
         String title = req.getParameter("title");
         String description = req.getParameter("description");

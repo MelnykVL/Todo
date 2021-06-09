@@ -25,7 +25,7 @@ public class SignupController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("signup.jsp");
-        requestDispatcher.include(req, resp);
+        requestDispatcher.forward(req, resp);
     }
 
     @Override
@@ -40,6 +40,7 @@ public class SignupController extends HttpServlet {
     }
 
     private void createUser(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+        req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
         PrintWriter out = resp.getWriter();
 
