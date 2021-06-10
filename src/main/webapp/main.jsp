@@ -21,25 +21,18 @@
 
         <body>
 
-
-            <nav class="navbar navbar-dark bg-dark navbar-fixed-top">
-
-                <div class="container" style="overflow: auto">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add
-                        new task</button>
-                    <a href="logout" class="btn btn-sm btn-outline-warning">Logout</a>
-                </div>
-
-            </nav>
+            <jsp:include page="template/header.jsp" />
 
             <div class="container">
+
+            <button type="button" class="my-4 btn btn-success float-right" data-toggle="modal" data-target="#addNewTask"><b>Add new task</b></button>
 
                 <table class="table table-bordered table-hover my-4">
                     <thead class="text-center">
                         <tr>
                             <th style="width: 10%" scope="col">Title</th>
                             <th scope="col">Description</th>
-                            <th style="width: 20%" scope="col">Status</th>
+                            <th style="width: 15%" scope="col">Status</th>
                             <th style="width: 20%" scope="col">Action</th>
                         </tr>
                     </thead>
@@ -55,7 +48,7 @@
                                     </td>
 
                                     <td class="text-center align-middle text-success text-uppercase font-weight-bold">
-                                        in progres
+                                        in progress
                                     </td>
 
                                     <td class="text-center align-middle font-weight-bold">
@@ -76,7 +69,7 @@
                         <tr>
                             <th style="width: 10%" scope="col">Title</th>
                             <th scope="col">Description</th>
-                            <th style="width: 20%" scope="col">Status</th>
+                            <th style="width: 15%" scope="col">Status</th>
                             <th style="width: 20%" scope="col">Action</th>
                         </tr>
                     </thead>
@@ -107,39 +100,7 @@
 
             </div>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">New task</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="main" method="post">
-                                <div class="form-group">
-                                    <label class="col-form-label">Title:</label>
-                                    <input type="text" class="form-control" id="title" name="title">
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-form-label">Description:</label>
-                                    <textarea class="form-control" id="description" name="description"
-                                        rows="5"></textarea>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Add</button>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
+            <jsp:include page="template/add-task-modal.jsp" />
 
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
