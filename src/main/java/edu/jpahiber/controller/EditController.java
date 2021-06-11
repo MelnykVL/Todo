@@ -30,7 +30,6 @@ public class EditController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
 
         id = Integer.parseInt(req.getParameter("id"));
 
@@ -57,7 +56,6 @@ public class EditController extends HttpServlet {
     }
 
     private void editTask(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        req.setCharacterEncoding("UTF-8");
 
         String title = req.getParameter("title");
         String description = req.getParameter("description");

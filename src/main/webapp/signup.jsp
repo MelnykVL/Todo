@@ -37,8 +37,8 @@
            </div>
 
            <nav class="navbar px-0">
+                <a href="login" class="btn btn-sm btn-secondary">Back</a>
                 <button type="submit" class="btn btn-primary">Signup</button>
-                <a href="login" class="btn btn-sm btn-secondary">Signup</a>
            </nav>
 
           </form>

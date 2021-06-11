@@ -40,8 +40,6 @@ public class SignupController extends HttpServlet {
     }
 
     private void createUser(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-        req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
         PrintWriter out = resp.getWriter();
 
         String firstName = req.getParameter("first-name");

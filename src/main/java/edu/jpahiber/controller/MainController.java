@@ -50,7 +50,6 @@ public class MainController extends HttpServlet {
 
 
     private void addTask(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        req.setCharacterEncoding("UTF-8");
 
         String title = req.getParameter("title");
         String description = req.getParameter("description");
