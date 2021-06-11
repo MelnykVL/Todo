@@ -10,11 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "DeleteController", urlPatterns = {"/delete"})
 public class DeleteController extends HttpServlet {
 
+    HttpSession session = null;
     TodoService todoService;
     UserService userService;
     Todo todo = null;
@@ -30,12 +32,17 @@ public class DeleteController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        session = req.getSession();
+
         id = Integer.parseInt(req.getParameter("id"));
 
-        user = userService.getUser(10);
         todo = todoService.getTodo(id);
+        user = todo.getUser();
+        user.removeTodo(todo);
 
-        todoService.deleteTodo(todo);
+        userService.updateUser(user);
+
+        session.setAttribute("user", user);
 
         resp.sendRedirect("main");
 

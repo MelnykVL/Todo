@@ -25,6 +25,6 @@ public class UserService {
         userDAOImpl.delete(model);
     }
 
-    public boolean userVerification(String username, String pass){ return userDAOImpl.verification(username, pass); }
+    public User userVerification(String username, String pass){ return userDAOImpl.verification(username, pass); }
 
 }

@@ -12,6 +12,13 @@
 <body>
 
     <div class="container col-md-3 border rounded mx-auto my-5 py-3 shadow bg-white">
+
+        <c:if test="${message != null}">
+            <div class="alert alert-danger" role="alert">
+                <b><c:out value="${message}"/></b>
+            </div>
+        </c:if>
+
           <h1 class="text-center">Registration</h1>
 
           <form action="signup" method="post">

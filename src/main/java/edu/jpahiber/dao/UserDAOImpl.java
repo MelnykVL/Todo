@@ -52,7 +52,7 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public boolean verification(String username, String pass) {
+    public User verification(String username, String pass) {
 
         User user = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -61,7 +61,7 @@ public class UserDAOImpl implements UserDAO{
         tx.commit();
         session.close();
 
-        return user != null && user.getPassword().equals(pass);
+        return user != null && user.getPassword().equals(pass) ? user : null;
 
     }
 

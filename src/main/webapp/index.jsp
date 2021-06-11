@@ -12,12 +12,19 @@
 <body>
 
     <div class="container col-md-3 border rounded mx-auto my-5 py-3 shadow bg-white">
+
+    <c:if test="${message != null}">
+        <div class="alert alert-danger" role="alert">
+            <b><c:out value="${message}"/></b>
+        </div>
+    </c:if>
+
       <h1 class="text-center">Login Form</h1>
       <form action="login" method="post">
 
        <div class="form-group">
         <label>Username:</label>
-            <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+            <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<c:out value="${username}"/>" required>
        </div>
 
        <div class="form-group">
@@ -26,8 +33,8 @@
        </div>
 
         <nav class="navbar px-0">
-            <button type="submit" class="btn btn-primary">Login</button>
             <a href="signup" class="btn btn-sm btn-secondary">Signup</a>
+            <button type="submit" class="btn btn-primary">Login</button>
         </nav>
 
       </form>

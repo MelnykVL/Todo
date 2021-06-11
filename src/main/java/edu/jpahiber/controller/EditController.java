@@ -11,11 +11,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "EditController", urlPatterns = {"/edit"})
 public class EditController extends HttpServlet {
 
+    HttpSession session= null;
     TodoService todoService;
     UserService userService;
     Todo todo = null;
@@ -31,9 +33,11 @@ public class EditController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        session = req.getSession();
+
         id = Integer.parseInt(req.getParameter("id"));
 
-        user = userService.getUser(10);
+        user = (User) session.getAttribute("user");
         todo = todoService.getTodo(id);
 
         req.setAttribute("username", user.getUsername());
@@ -57,6 +61,8 @@ public class EditController extends HttpServlet {
 
     private void editTask(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
+        session = req.getSession();
+
         String title = req.getParameter("title");
         String description = req.getParameter("description");
         Boolean status = Boolean.parseBoolean(req.getParameter("status"));
@@ -66,6 +72,9 @@ public class EditController extends HttpServlet {
         todo.setDone(status);
 
         todoService.updateTodo(todo);
+        user = userService.getUser(user.getId());
+
+        session.setAttribute("user", user);
 
         resp.sendRedirect("main");
 

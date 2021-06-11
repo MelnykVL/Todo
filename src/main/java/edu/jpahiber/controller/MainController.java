@@ -10,13 +10,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "MainController", urlPatterns = {"/main"})
 public class MainController extends HttpServlet {
 
-    UserService userService;
+    UserService userService = null;
     User user = null;
+    HttpSession session = null;
 
     @Override
     public void init() throws ServletException {
@@ -26,7 +28,9 @@ public class MainController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        user = userService.getUser(10);
+        session = req.getSession();
+
+        user = (User) session.getAttribute("user");
 
         req.setAttribute("username", user.getUsername());
         req.setAttribute("todoList", user.getTodoList());

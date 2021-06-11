@@ -1,6 +1,7 @@
 package edu.jpahiber.controller;
 
 
+import edu.jpahiber.model.User;
 import edu.jpahiber.service.UserService;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -44,12 +46,18 @@ public class LoginController extends HttpServlet {
 
         String username = req.getParameter("username");
         String pass = req.getParameter("password");
+        User user = userService.userVerification(username, pass);
 
-        if (userService.userVerification(username, pass)){
+        if (user != null){
+            HttpSession session = req.getSession();
+            session.setAttribute("user", user);
             resp.sendRedirect("main");
         } else {
-//            throw new Exception("Login not successful!");
-            out.write("<h2>" + "Username or password is incorrect!" + "</h2>");
+
+            String message = "Username or password is incorrect!";
+            req.setAttribute("message", message);
+            req.setAttribute("username", username);
+
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
             requestDispatcher.include(req, resp);
         }
