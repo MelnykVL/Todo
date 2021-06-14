@@ -34,14 +34,14 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
-            authenticate(req, resp);
+            identification(req, resp);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    private void authenticate(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+    private void identification(HttpServletRequest req, HttpServletResponse resp) throws Exception{
         PrintWriter out = resp.getWriter();
 
         String username = req.getParameter("username");
