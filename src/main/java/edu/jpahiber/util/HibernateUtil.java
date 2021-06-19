@@ -1,4 +1,4 @@
-package edu.jpahiber.dao;
+package edu.jpahiber.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
