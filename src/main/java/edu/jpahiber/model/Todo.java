@@ -28,6 +28,11 @@ public class Todo {
     public Todo() {
     }
 
+    public Todo(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
     public Todo(String title, String description, User user) {
         this.title = title;
         this.description = description;
@@ -90,6 +95,7 @@ public class Todo {
     @Override
     public String toString() {
         return "\n\tTodo{" +
+                "id='" + id + '\'' +
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", isDone=" + isDone +

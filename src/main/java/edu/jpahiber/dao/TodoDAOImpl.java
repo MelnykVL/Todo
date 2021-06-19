@@ -44,6 +44,7 @@ public class TodoDAOImpl implements TodoDAO{
 
         transaction.begin();
         em.persist(model);
+        em.flush();
         transaction.commit();
         em.close();
 

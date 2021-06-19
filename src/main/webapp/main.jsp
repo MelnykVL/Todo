@@ -52,8 +52,8 @@
                                     </td>
 
                                     <td class="text-center align-middle font-weight-bold">
-                                        <a href="edit?id=${todo.id} />" class="text-warning px-3">Edit</a>
-                                        <a href="delete?id=${todo.id} />" class="text-danger px-3">Delete</a>
+                                        <a href="edit?id=${todo.id}" class="text-warning px-3">Edit</a>
+                                        <a href="delete?id=${todo.id}" class="text-danger px-3">Delete</a>
                                     </td>
                                 </tr>
                             </tbody>

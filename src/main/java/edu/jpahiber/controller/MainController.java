@@ -2,6 +2,7 @@ package edu.jpahiber.controller;
 
 import edu.jpahiber.model.Todo;
 import edu.jpahiber.model.User;
+import edu.jpahiber.service.TodoService;
 import edu.jpahiber.service.UserService;
 
 import javax.servlet.RequestDispatcher;
@@ -17,12 +18,14 @@ import java.io.IOException;
 public class MainController extends HttpServlet {
 
     UserService userService = null;
+    TodoService todoService = null;
     User user = null;
     HttpSession session = null;
 
     @Override
     public void init() throws ServletException {
         userService = new UserService();
+        todoService = new TodoService();
     }
 
     @Override
@@ -53,16 +56,16 @@ public class MainController extends HttpServlet {
 
 
 
-    private void addTask(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+    public void addTask(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
         String title = req.getParameter("title");
         String description = req.getParameter("description");
 
         Todo todo = new Todo(title, description, user);
 
-        user.addTodo(todo);
+        todoService.saveTodo(todo);
 
-        userService.updateUser(user);
+        user.addTodo(todo);
 
         resp.sendRedirect("main");
 

@@ -14,9 +14,4 @@ public class JpaUtil {
         return emf.createEntityManager();
     }
 
-    public static void closeFactory(){
-        if(emf != null)
-            emf.close();
-    }
-
 }

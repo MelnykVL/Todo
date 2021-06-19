@@ -62,6 +62,7 @@ public class UserDAOImpl implements UserDAO{
 
         transaction.begin();
         em.merge(model);
+        em.flush();
         transaction.commit();
         em.close();
 
