@@ -8,28 +8,28 @@ import java.util.List;
 
 public class TodoService {
 
-    private TodoDAO todoDAO = new TodoDAOImpl();
+    private final TodoDAOImpl todoDAOImpl = new TodoDAOImpl();
 
     public TodoService(){}
 
     public Todo getTodo(int id){
-        return todoDAO.get(id);
+        return todoDAOImpl.get(id);
     }
 
     public void saveTodo(Todo model){
-        todoDAO.save(model);
+        todoDAOImpl.save(model);
     }
 
     public void updateTodo(Todo model){
-        todoDAO.update(model);
+        todoDAOImpl.update(model);
     }
 
     public void deleteTodo(Todo model){
-        todoDAO.delete(model);
+        todoDAOImpl.delete(model);
     }
 
     public List<Todo> getAllTodos(){
-        return todoDAO.getAll();
+        return todoDAOImpl.getAll();
     }
 
 }
