@@ -108,7 +108,7 @@ public class UserDAOImpl implements UserDAO{
                     .setParameter("username", username)
                     .getSingleResult();
         } catch (Exception e){
-            user = null;
+            e.printStackTrace();
         }
 
         transaction.commit();

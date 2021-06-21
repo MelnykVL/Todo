@@ -1,6 +1,5 @@
 package edu.jpahiber.service;
 
-import edu.jpahiber.dao.TodoDAO;
 import edu.jpahiber.dao.TodoDAOImpl;
 import edu.jpahiber.model.Todo;
 
