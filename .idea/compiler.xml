@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Todo" options="-parameters" />
+      <module name="Todo" options="" />
     </option>
   </component>
 </project>
