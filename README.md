@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/MelnykVL/Todo.svg?branch=master)](https://travis-ci.com/MelnykVL/Todo)
+
 # Todo
 
 ## Overview
