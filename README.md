@@ -40,4 +40,4 @@ Todo web app with a personal account for each user that allows you to make a lis
 5. Create the database called ***todo***.
 6. Using Maven in Intellij IDEA, run `flyway:migrate` to create tables in the database.
 7. Run `mvn tomcat7:run` command to run the project.
-8. Change the address in the browser's address bar to `localhost:8080`
+8. Change the address in the browser's address bar to `localhost:8080`.
