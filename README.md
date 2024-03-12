@@ -4,7 +4,7 @@
 
 ## Overview
 
-Todo web app with a personal account for each user that allows you to make a list of your tasks.
+Todo is a web app with a personal account for each user that allows you to make a list of your tasks.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ Todo web app with a personal account for each user that allows you to make a lis
 
   > [PostgreSQL](https://www.postgresql.org/download/)
 
-- Install a Java IDE (for example: Intellij IDEA, Eclipse, NetBeans).
+- Install a Java IDE (for example: IntelliJ IDEA, Eclipse, NetBeans).
 
   > [Intellij IDEA](https://www.jetbrains.com/idea/download/#section=windows) (recommended) <br>
   > [Eclipse](https://www.eclipse.org/downloads/) <br>
@@ -34,10 +34,10 @@ Todo web app with a personal account for each user that allows you to make a lis
 
     `git clone https://github.com/MelnykVL/Todo.git`
 
-2. Open the project with the Intellij IDEA.
+2. Open the project with the IntelliJ IDEA.
 3. Load Maven changes.
 4. Set your settings in **flyway.poperties** and **persistence.xml** files.
 5. Create the database called ***todo***.
-6. Using Maven in Intellij IDEA, run `flyway:migrate` to create tables in the database.
+6. Using Maven in IntelliJ IDEA, run `flyway:migrate` to create tables in the database.
 7. Run `mvn tomcat7:run` command to run the project.
 8. Change the address in the browser's address bar to `localhost:8080`.
